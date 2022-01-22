@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+  <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Freelancer - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
+  
+<body class="page-section bg-primary text-white mb-0" id="page-top">
+    <section class="page-section bg-primary text-white mb-0" id="about">
+        <div class="container">
+                <h2 class="page-section-heading text-center text-uppercase text-white">Inicio</h2>
+                    <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                
+                <div>
+                <p><h3>Inicio</h3></p>
+                <p>En esta página se muestra una descripción del sistema y un resumen de lo que hace cada una de las pestañas disponibles.</p>
+                <hr>
+                <p><h3>Lista de juegos almacenados en BD</h3></p>
+                <p>En la pestaña "Juegos" podremos observar un listado de títulos de juegos de mesa. Estos títulos han sido
+                recogidos mediante scrapping a la página web de júpiter juegos, una tienda con local en sevilla enfocada en los juegos
+                de mesa y en el merchandising.</p>
+                <hr>
+                <p><h3>Búsqueda por nombre</h3></p>
+                <p>La búsqueda por nombre se realiza mediante whoosh. Dada una cadena de caracteres, devuelve el juego que contenga
+                ese título. Si la palabra ingresada no se encuentra dentro del título del juego, no se devolverá ningún resultado.</p>
+                <hr>
+                <p><h3>Búsqueda por rango de precio</h3></p>
+                <p>Dados dos floats, devuelve todos los juegos que se encuentren en ese rango. Muestra título y precio de cada juego.</p>
+                <hr>
+                <p><h3>Listado de puntuaciones</h3></p>
+                <p>Muestra las primeras 1000 puntuaciones del dataset del sistema de recomendación. También muestra si esos juegos se
+                encuentran en la tienda de júpiter juegos</p>
+                <hr>
+                <p><h3>Recomendación de juego</h3></p>
+                <p>Dado un nombre de usuario, te recomienda juegos que posiblemente le puedan gustar a ese usuario. Esto se hace
+                mediante un filtrado de recomendación colaborativo basado en usuarios.</p>
+                <hr>
+                <p><h3>Recomendación de un juego similar</h3></p>
+                <p>Dado un ID de un juego de mesa, recomienda juegos similares al dado. Esto se hace
+                mediante un filtrado de recomendación colaborativo basado en items.</p>
+                <hr>
+                <p><h3>Carga base de datos</h3></p>
+                <p>La carga de la base de datos no debe ser utilizada a no ser que sea estrictamente necesario, ya que carga
+                14 millones de datos del dataset de recomendación, con lo cual puede tardar un tiempo elevado en ejecutarse.</p>
+                <p>La carga ejecuta 3 funciones: PopulateDB(), crear_schema() y populatePuntuacion()</p>
+                <p>PopulateDB carga la base de datos del scrapping realizado a júpiter juegos. Para ello, accede al catálogo de juegos de 
+                mesa, va accediendo uno a uno, comprueba que la url contenga juego de mesa, y comprueba que contenga todos los datos. 
+                Una vez ha hecho las comprobaciones correspondientes, carga las 10 primeras páginas en la base de datos.</p>
+                <p>crear_schema genera el esquema de whoosh para la posterior búsqueda de datos. En este esquema se introducen
+                exactamente los mismos datos que los que contiene el modelo de JuegoDeMesa.</p>
+                <p>populatePuntuacion carga el dataset del sistema de recomendación. Se hace en un único modelo debido
+                a que en principio no requiero de utilizar los otros datasets, y ya que la carga es lenta, opté por cargar un
+                único modelo. En este se comprueba que el tamaño de lo recogido sea igual a 6, para evitar posibles problemas con
+                el separador, y guarda usuario, puntuación, id del juego y nombre del juego.</p>
+                <hr>
+                <p><h3>Carga matriz</h3></p>
+                <p>Para cargar el diccionario, simplemente se genera un diccionario de usuarios, en el que cada usuario tiene a su vez
+                asociado un diccionario con juegos y con su puntuación a cada juego. Para la transformada, se intercambian los usuarios
+                por los juegos.</p>
+                <hr>
+
+                </div>
+</body>
+{% endblock %}

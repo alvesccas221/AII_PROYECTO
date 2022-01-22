@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+  <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Freelancer - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
+  
+<body class="page-section bg-primary text-white mb-0" id="page-top">
+    <section class="page-section bg-primary text-white mb-0" id="about">
+        <div class="container">
+                <h2 class="page-section-heading text-center text-uppercase text-white">Puntuaciones</h2>
+                    <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <p>Se han cargado {{tamano}} puntuaciones</p>
+        <h4>Lista de juegos que se encuentran en júpiter juegos: </h4>
+        {% for juegojupiter in juegosjupiter %}
+        <li> {{juegojupiter}} </li>
+        {% endfor %}
+        
+        <hr>
+        <h4>Puntuaciones de los usuarios: </h4>
+        <hr>
+            {% for puntuacion in puntuaciones %}
+			    <p><b>Usuario: </b>{{puntuacion.usuario}}</p>
+			    <p><b>Puntuacion: </b>{{puntuacion.puntuacion}}</p>
+			    <p><b>Nombre del juego: </b>{{puntuacion.juego_nombre}}</p>
+                <p><b>ID del juego: </b>{{puntuacion.juego_id}}</p>	  
+                <hr>  	    
+			{% endfor %}
+</body>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block encabezado %}
+{% endblock %}
+
+
+  {% block contenido %}
+  <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Freelancer - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
+  
+<body class="page-section bg-primary text-white mb-0" id="page-top">
+    <section class="page-section bg-primary text-white mb-0" id="about">
+        <div class="container">
+                <h2 class="page-section-heading text-center text-uppercase text-white">Búsqueda de juegos por rango</h2>
+                    <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+        <div class="form-floating mb-3">
+        <div class="text-center mb-3">
+        <form id="form-control" method="POST" action=''>{% csrf_token %}
+        {{form.as_p}}
+        <input class="btn btn-primary btn-xl" type='submit' value='Realizar busqueda'/>
+        </form>
+        </div>
+        {{mensaje}}
+        	    <hr>
+
+        {% for juego in results %}	
+            <dd><b>Título: </b>{{juego.titulo}}</dd>
+            <dd><b>Precio: </b>{{juego.precio}} €</dd>
+            	    <hr>
+
+        {% endfor %}
+        <section>
+        </div>
+        </div>
+    </section>
+</body>
+{% endblock %}
+  
+  
